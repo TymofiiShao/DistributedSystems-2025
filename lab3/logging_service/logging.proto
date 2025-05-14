@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+service LoggingService {
+  rpc LogMessage (LogRequest) returns (LogResponse);
+  rpc GetMessages (Empty) returns (MessagesList);  // ДОДАЙ ЦЕ
+}
+
+message LogRequest {
+  string uuid = 1;
+  string msg = 2;
+}
+
+message LogResponse {
+  string status = 1;
+}
+
+message Empty {}  // ДОДАЙ ЦЕ
+
+message MessagesList {  // І ЦЕ
+  repeated string messages = 1;
+}
+
