@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  master:
+    build: ./master
+    ports:
+      - "8000:8000"
+    depends_on:
+      - secondary
+      - secondary2
+    networks:
+      - lognet
+
+  secondary:
+    build: ./secondary
+    ports:
+      - "8001:8001"
+    networks:
+      - lognet
+
+  secondary2:
+    build: ./secondary
+    ports:
+      - "8002:8001"
+    networks:
+      - lognet
+
+networks:
+  lognet:
+    driver: bridge
+
